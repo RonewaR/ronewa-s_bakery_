@@ -1,0 +1,414 @@
+/* ===== CSS Reset (for consistency across browsers) ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Base Styles ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff8f0;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover; /* Crop images to fit */
+}
+
+/* ===== Typography ===== */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #e76f51;
+  margin: 1em 0 0.5em;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-bottom: 1em;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* ===== Layout & Structure ===== */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+/* ===== Header & Navigation ===== */
+header {
+  background-color: #f4a261;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+nav {
+  background-color: #e76f51;
+  text-align: center;
+  padding: 10px 0;
+}
+
+nav a {
+  margin: 0 15px;
+  font-weight: bold;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffe0c1;
+}
+
+nav ul li a.active {
+  background: red;
+  color: white;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  background-color: #ffe0c1;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* ===== Features & Cards ===== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+/* ===== Products Grid ===== */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px; /* space between cards */
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.product {
+  perspective: 1000px;
+  width: 280px;
+  height: 350px;
+  cursor: pointer;
+  /* remove margin here if using grid gap for consistent spacing */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d; /* Essential for 3D flip */
+}
+
+.product:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hides the back side when rotated */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Front side styling */
+.card-front {
+  background-color: #fff3e0;
+}
+
+/* Back side styling */
+.card-back {
+  background-color: #e76f51;
+  color: white;
+  transform: rotateY(180deg); /* Flip back side initially */
+}
+
+.product img {
+  width: 100%;
+  height: 180px; /* Crop height */
+  object-fit: cover;
+}
+
+.product-title {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== Flip Card Container ===== */
+.feature {
+  perspective: 1000px;
+  width: 280px;
+  height: 350px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.feature:hover .card-inner {
+  transform: rotateY(180deg) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* Front & Back faces */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card-front {
+  background-color: #fff3e0;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.card-back {
+  background-color: #e76f51;
+  color: white;
+  transform: rotateY(180deg);
+  font-size: 1rem;
+}
+
+/* Static Cards for Why Choose Us */
+.static-card {
+  height: 350px;
+  background-color: #f4a261;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.static-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== CTA Section ===== */
+.cta {
+  text-align: center;
+  margin: 60px 0;
+  padding: 40px 20px;
+  background-color: #f4a261;
+  border-radius: 8px;
+  color: white;
+}
+
+.cta a {
+  background-color: #e76f51;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta a:hover {
+  background-color: #d65d43;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: #f4a261;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+/* ===== Forms ===== */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #e76f51;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d65d43;
+}
+
+/* ===== Social Media Icons ===== */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.social-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* WhatsApp */
+.social-icons a[aria-label="WhatsApp"] {
+  background: #25D366;
+}
+
+.social-icons a[aria-label="WhatsApp"]:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.6);
+}
+
+/* Instagram */
+.social-icons a[aria-label="Instagram"] {
+  background: #C13584; /* Instagram pink gradient color */
+}
+
+.social-icons a[aria-label="Instagram"]:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(193, 53, 132, 0.6);
+}
+/* TikTok */
+.social-icons a[aria-label="TikTok"] {
+  background: #000000;
+}
+
+.social-icons a[aria-label="TikTok"]:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .features,
+  .products {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .feature,
+  .product {
+    width: 90%;
+  }
+
+  .product {
+    height: auto;
+  }
+
+  .product img {
+    height: 150px;
+  }
+}
